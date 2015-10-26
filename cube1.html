@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://140.122.185.90/cg/code/cube1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+attribute vec4 vColor;
+varying vec4 fColor;
+uniform mat4 transform;
+
+void
+main()
+{
+    fColor = vColor;
+    gl_Position = transform * vPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+varying vec4 fColor;  // Note that this will be interpolated between vertices.
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="./cube1_files/webgl-utils.js"></script>
+<script type="text/javascript" src="./cube1_files/initShaders.js"></script>
+<script type="text/javascript" src="./cube1_files/MV.js"></script>
+<script type="text/javascript" src="./cube1_files/cube1.js"></script>
+
+
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+<br>
+<button id="xButton">Rotate X</button>
+<button id="yButton">Rotate Y</button>
+<button id="zButton">Rotate Z</button>
+<br>
+<button id="pButton" style="background-color:#00ff00">Pause</button>
+<button id="dButton" style="background-color:#6688cc">Depth Test</button>
+<br>
+<table><tr><td></td><td align="center"><button id="fButton">Forward</button></td><td></td></tr>
+<tr><td><button id="lButton">Left</button></td><td align="center"></td><td><button id="rButton">Right</button></td></tr>
+<tr><td></td><td><button id="bButton">Backward</button></td><td></td></tr></table>
+<br>
+<!--<button id="+Button">FOV +5</button>
+<button id="-Button">FOV -5</button>
+<br>-->
+
+<input type="range" id="FOVslider" min="45" max="179" step="1" value="45" onChange="showValue(this.value);">
+<span id="range">45</span>
+
+
+</body></html>
