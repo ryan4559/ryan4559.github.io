@@ -24,7 +24,7 @@ void main()
     vec4 N = normalize( modelingMatrix * vNormal );	// Normal vector
 	vec4 V = normalize( eye - vPosition );		// Eye vector.
     vec4 H = normalize( L + V );  // Halfway vector in the modified Phong model
-    vec4 R = reflect(-L,N);
+    //vec4 R = reflect(-L,N);
 
 
     // Compute terms in the illumination equation
@@ -37,7 +37,7 @@ void main()
 	// HW3 hint: complete the next line to compute the specular component
 	vec4 specular = Ks * materialSpecular;
 	
-    fColor = (ambient + diffuse ) * vColor;
+    fColor = (ambient + diffuse + specular) * vColor ;
     gl_Position = projectionMatrix * viewingMatrix * modelingMatrix * vPosition;
 }
 </script>

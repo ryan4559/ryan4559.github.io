@@ -55,7 +55,7 @@ var vertexColors = [
 	// vec4( 0.0, 1.0, 1.0, 1.0 )   // cyan
 // ];
 
-var lightPosition = vec4( 0.0, 0.0, -2.0, 1.0 );
+var lightPosition = vec4( 0.0, 1.0, -2.0, 1.0 );
 
 var materialAmbient = vec4( 0.25, 0.25, 0.25, 1.0 );
 var materialDiffuse = vec4( 0.8, 0.8, 0.8, 1.0);
@@ -205,7 +205,7 @@ function render() {
 
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
 
-    if (! paused) theta[axis] += 1.0;
+    if (! paused) theta[axis] += 2.0;
 	if (depthTest) gl.enable(gl.DEPTH_TEST); else gl.disable(gl.DEPTH_TEST);
 
     gl.uniformMatrix4fv( modelingLoc,   0, flatten(modeling) );
