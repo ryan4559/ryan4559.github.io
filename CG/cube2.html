@@ -24,7 +24,6 @@ void main()
     vec4 N = normalize( modelingMatrix * vNormal );	// Normal vector
 	vec4 V = normalize( eye - vPosition );		// Eye vector.
     vec4 H = normalize( L + V );  // Halfway vector in the modified Phong model
-    //vec4 R = reflect(-L,N);
 
 
     // Compute terms in the illumination equation
