@@ -55,7 +55,7 @@ var vertexColors = [
 	// vec4( 0.0, 1.0, 1.0, 1.0 )   // cyan
 // ];
 
-var lightPosition = vec4( 0.0, 1.0, -2.0, 1.0 );
+var lightPosition = vec4( 0.0, 0.0, -2.0, 1.0 );
 
 var materialAmbient = vec4( 0.25, 0.25, 0.25, 1.0 );
 var materialDiffuse = vec4( 0.8, 0.8, 0.8, 1.0);

@@ -20,25 +20,24 @@ void main()
 {
 	vec4 eye = vec4(0.0, 0.0, -1.0, 1.0);  // The default eye position
 
-    vec4 TN = modelingMatrix * vPosition;
-
     vec4 L = normalize( lightPosition - vPosition ); // Light vector
-    vec4 N = normalize( vNormal );	// Normal vector
+    vec4 N = normalize( modelingMatrix * vNormal );	// Normal vector
 	vec4 V = normalize( eye - vPosition );		// Eye vector.
     vec4 H = normalize( L + V );  // Halfway vector in the modified Phong model
+    //vec4 R = reflect(-L,normalize( modelingMatrix * vNormal ));
 
 
     // Compute terms in the illumination equation
     vec4 ambient = materialAmbient;
 
-    float Kd = max( dot(L, TN), 0.0 );
+    float Kd = max( dot(L, N), 0.0 );
     vec4  diffuse = Kd * materialDiffuse;
 
 	float Ks = pow( max(dot(N, H), 0.0), shininess );
 	// HW3 hint: complete the next line to compute the specular component
-	// vec4 specular = ...
+	vec4 specular = Ks * materialSpecular;
 	
-    fColor = (ambient + diffuse) * vColor;
+    fColor = (ambient + diffuse ) * vColor;
     gl_Position = projectionMatrix * viewingMatrix * modelingMatrix * vPosition;
 }
 </script>
